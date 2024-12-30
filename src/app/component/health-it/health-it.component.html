@@ -1,0 +1,10 @@
+<div class="container mt-5">
+    <div class="row">
+      <div class="col-sm-4 mb-4" *ngFor="let chart of chartSection; let i = index">
+        <div class="card p-4">
+          <h5 class="text-center mb-3">{{ categoryKeys[i] }}</h5>
+          <div echarts [options]="chart" class="chart-container"></div>
+        </div>
+      </div>
+    </div>
+  </div>

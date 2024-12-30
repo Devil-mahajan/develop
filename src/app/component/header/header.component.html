@@ -1,0 +1,31 @@
+<div>
+    <div class="logo-and-title">
+      <div class="logo-section">
+        <img src="assets/logo.png" alt="Global Research and I-DAIR Logos" class="logo">
+      </div>
+      <div class="title-section">
+        <h1 class="title">The National Digital Health Strategy Map
+
+          <a >Data Details</a>
+        </h1>
+      </div>
+      <div class="guide-section">
+       
+      </div>
+    </div>
+  
+  
+    <div class="toggle-container">
+      <mat-button-toggle-group appearance="legacy" [(ngModel)]="currentTab" (ngModelChange)="toggleBtn($event)"
+        class="toggle-button-group">
+        <mat-button-toggle value="health-it" class="toggle-button">
+          Health & IT
+        </mat-button-toggle>
+        <mat-button-toggle value="digital-health" class="toggle-button">
+          Digital Health
+        </mat-button-toggle>
+      </mat-button-toggle-group>
+    </div>
+  
+  
+  </div>
