@@ -17,16 +17,28 @@ export class HealthItComponent implements OnChanges {
 
   constructor(private authService: AuthService) {}
 
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes['isToggleSelected']) {
+  ngOnInit(): void {
+    this.http.get
+    if ('isToggleSelected') {
       this.resetData();
-      const endPoint = this.isToggleSelected === 'health-it' ? '1/14/2021' : '2/14/2021';
-      this.authService.passData(endPoint).subscribe(data => {
+      // console.log(('hdvgvgdvgv'));
+      
+      const endData = this.isToggleSelected === 'health-it' ? '1/14/2021' : '2/14/2021';
+      this.authService.passData(endData).subscribe(data => {
         this.store = data;
-        console.log(data)
-        this.processData('Present Development');
+        console.log('fetching data' ,data);
+        
+        
       });
+      // this.prospectDevelopment('Prospective Development')
     }
+    this.presentDevelopnemt('Present Development');
+    
+    
+  }
+  
+  ngOnChanges(changes: SimpleChanges): void {
+    
   }
 
   resetData(): void {
@@ -35,16 +47,27 @@ export class HealthItComponent implements OnChanges {
     this.halfScores = { development: [], building: [] };
   }
 
-  processData(developmentKey: string): void {
+  presentDevelopnemt(developmentKey: string): void {
     const developmentData = this.store[developmentKey];
     if (!developmentData) return;
 
     this.categoryKeys = Object.keys(developmentData).sort();
     const presentData = this.categoryKeys.map(key => developmentData[key]);
+    console.log('present data', presentData);
+    
 
     this.calculateScores(presentData);
     this.generateChartSection();
   }
+
+  // prospectDevelopment(dataKey: any): void {
+  //   const dataDevelopKey = this.store[dataKey];
+  //   if(!dataDevelopKey) return;
+
+  //   this.categoryKeys = Object.keys(dataDevelopKey).sort();
+  //   const prospectData =this.categoryKeys.map(key => dataDevelopKey[key]);
+  //   console.log('Prospective Development' ,dataDevelopKey)
+  // }
 
   calculateScores(data: any[]): void {
     data.forEach(category => {
